@@ -1,0 +1,48 @@
+{
+  "name": "schema-based-graphql-server-design",
+  "version": "0.0.0",
+  "description": "Intuitive and scalable GraphQL server design",
+  "scripts": {
+    "generate": "graphql-codegen",
+    "build": "rm -rf dist/ && npm run generate && tsc",
+    "dev": "nodemon",
+    "start": "node dist/src/server.js",
+    "lint": "eslint \"{src,tests}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,tests}/**/*.ts\" --fix"
+  },
+  "nodemonConfig": {
+    "exec": "npm run generate && node -r ts-node/register --inspect src/server.ts",
+    "ext": "ts",
+    "ignore": [
+      "*.codegen.ts",
+      "./**/tests/**/*",
+      "./**/dist/**/*",
+      "./**/node_modules/**/*"
+    ],
+    "watch": [
+      "./src/"
+    ]
+  },
+  "repository": "https://github.com/jaredgorski/schema-based-graphql-server-design",
+  "author": "Jared Gorski <jaredgorski6@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-tools/utils": "^8.6.5",
+    "apollo-server": "^3.6.6",
+    "graphql": "^16.3.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.6.2",
+    "@graphql-codegen/typescript": "^2.4.8",
+    "@graphql-codegen/typescript-resolvers": "^2.6.1",
+    "@types/graphql": "^14.5.0",
+    "@types/lodash": "^4.14.180",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.12.0",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}

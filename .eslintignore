@@ -1,0 +1,4 @@
+*.codegen.ts
+dist
+node_modules
+tests

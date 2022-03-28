@@ -1,0 +1,17 @@
+overwrite: true
+schema: ./src/schema/index.ts
+require:
+  - ts-node/register/transpile-only
+generates:
+  ./src/schema/types.codegen.ts:
+    config:
+      showUnusedMappers: true
+      useIndexSignature: true
+      contextType: '../context#Context'
+      mappers:
+        Character: '../data#Character as CharacterModel'
+        Planet: '../data#Planet as PlanetModel'
+        Species: '../data#Species as SpeciesModel'
+    plugins:
+      - typescript
+      - typescript-resolvers
