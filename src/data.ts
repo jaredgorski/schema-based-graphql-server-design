@@ -122,5 +122,7 @@ export class Collection<T extends Document> {
       ...this.data[index],
       ...update,
     };
+
+    return this.data[index];
   }
 }

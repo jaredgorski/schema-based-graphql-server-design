@@ -4,7 +4,7 @@ import { Resolvers } from '../types.codegen';
 
 const typeDefs = gql`
   type Mutation {
-    updateCharacterName(input: UpdateCharacterNameInput): Boolean!
+    updateCharacterName(input: UpdateCharacterNameInput): Character!
   }
 
   input UpdateCharacterNameInput {
@@ -22,9 +22,7 @@ const resolvers: Resolvers = {
 
       const { id, name } = args.input;
 
-      context.data.characters.updateById(id, { name });
-
-      return true;
+      return context.data.characters.updateById(id, { name });
     },
   },
 };
