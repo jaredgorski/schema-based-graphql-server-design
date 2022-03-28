@@ -31,3 +31,5 @@ To run the server:
 2. Navigate to `http://localhost:4000`
 3. Click "Query your server"
 4. Explore the schema and run queries
+
+![Screenshot of Apollo Studio](https://raw.githubusercontent.com/jaredgorski/schema-based-graphql-server-design/main/screenshot_apollo-studio.png)
