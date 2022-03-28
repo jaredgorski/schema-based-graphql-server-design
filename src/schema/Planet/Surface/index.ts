@@ -1,22 +1,20 @@
 import { gql } from 'apollo-server';
 
-import Surface from './Surface';
+import mainFeature from './mainFeature';
 
 const typeDefs = gql`
-  type Planet {
-    id: ID!
+  type Surface {
     name: String!
-    climate: String!
-    surface: Surface!
+    features: [String!]!
   }
 `;
 
 export default {
   typeDefs: [
     typeDefs,
-    Surface.typeDefs,
+    mainFeature.typeDefs,
   ],
   resolvers: [
-    Surface.resolvers,
+    mainFeature.resolvers,
   ],
 };

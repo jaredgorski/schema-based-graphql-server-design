@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server';
 
+import isLukeSkywalker from './isLukeSkywalker';
 import planet from './planet';
 
 const typeDefs = gql`
@@ -12,9 +13,11 @@ const typeDefs = gql`
 export default {
   typeDefs: [
     typeDefs,
+    isLukeSkywalker.typeDefs,
     planet.typeDefs,
   ],
   resolvers: [
+    isLukeSkywalker.resolvers,
     planet.resolvers,
   ],
 };

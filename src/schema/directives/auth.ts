@@ -30,7 +30,7 @@ function directive(schema: GraphQLSchema) {
         const { resolve = defaultFieldResolver } = fieldConfig;
 
         fieldConfig.resolve = (parent, args, context, info) => {
-          /* Some authentication code */
+          console.log('Validating authorization...');
 
           return resolve(parent, args, context, info);
         };

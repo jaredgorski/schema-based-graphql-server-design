@@ -4,14 +4,15 @@
   "description": "Intuitive and scalable GraphQL server design",
   "scripts": {
     "generate": "graphql-codegen",
-    "build": "rm -rf dist/ && npm run generate && tsc",
+    "generate:print": "PRINT_SCHEMA=true graphql-codegen",
+    "prebuild": "npm run generate",
+    "build": "rm -rf dist/ && tsc",
     "dev": "nodemon",
-    "start": "node dist/src/server.js",
     "lint": "eslint \"{src,tests}/**/*.ts\"",
     "lint:fix": "eslint \"{src,tests}/**/*.ts\" --fix"
   },
   "nodemonConfig": {
-    "exec": "npm run generate && node -r ts-node/register --inspect src/server.ts",
+    "exec": "npm run generate && node -r ts-node/register --inspect src/index.ts",
     "ext": "ts",
     "ignore": [
       "*.codegen.ts",
@@ -30,6 +31,7 @@
     "@graphql-tools/utils": "^8.6.5",
     "apollo-server": "^3.6.6",
     "graphql": "^16.3.0",
+    "graphql-scalars": "^1.16.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {

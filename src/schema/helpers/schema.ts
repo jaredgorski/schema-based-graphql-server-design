@@ -1,4 +1,4 @@
-import { DocumentNode } from 'graphql';
+import { DocumentNode, printSchema } from 'graphql';
 import { RecursiveArray, flattenDeep, merge } from 'lodash';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 
@@ -45,6 +45,12 @@ export default function makeSchema(modules: GraphQLModule[]) {
   });
 
   schema = applyDirectives(schema);
+
+  if (process.env.PRINT_SCHEMA === 'true') {
+    console.log('\nSchema built! ✨');
+    console.log('\n---\n\n', printSchema(schema), '\n\n---\n');
+    console.log('\n\n\n\n\n'); // offset codegen self-clear
+  }
 
   return schema;
 }

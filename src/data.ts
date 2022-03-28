@@ -12,6 +12,12 @@ export interface Planet extends Document {
 }
 
 export interface Species extends Document {
+  metadata: {
+    speed: {
+      max: number;
+      min: number;
+    };
+  };
   planets: string[];
 }
 
@@ -19,11 +25,13 @@ export const data = {
   characters: [
     {
       id: '1',
+      createdAt: 1648496565147,
       name: 'Luke Skywalker',
       planet: 'Tatooine',
     },
     {
       id: '2',
+      createdAt: 1648496565147,
       name: 'Han Solo',
       planet: 'Corellia',
     },
@@ -31,19 +39,42 @@ export const data = {
   planets: [
     {
       id: '3',
+      createdAt: 1648496565147,
       name: 'Tatooine',
-      climate: 'Desert',
+      climate: 'Arid',
+      surface: {
+        name: 'Desert',
+        features: [
+          'Sand',
+          'Rocks',
+        ],
+      },
     },
     {
       id: '4',
+      createdAt: 1648496565147,
       name: 'Corellia',
       climate: 'Temperate',
+      surface: {
+        name: 'Forest',
+        features: [
+          'Trees',
+          'Soil',
+        ],
+      },
     },
   ],
   species: [
     {
       id: '5',
+      createdAt: 1648496565147,
       name: 'Human',
+      metadata: {
+        speed: {
+          max: 8,
+          min: 3,
+        },
+      },
       planets: [
         'Tatooine',
         'Corellia',
@@ -57,7 +88,7 @@ export class Collection<T extends Document> {
   data: T[];
 
   constructor(data: T[]) {
-    this.data = data;
+    this.data = [ ...data ];
   }
 
   findById(id: string) {
@@ -78,5 +109,18 @@ export class Collection<T extends Document> {
     }
 
     return result;
+  }
+
+  updateById(id: string, update: Partial<T>) {
+    const index = this.data.map((doc) => doc.id).indexOf(id);
+
+    if (!index) {
+      throw new Error(`Item ${id} not found.`);
+    }
+
+    this.data[index] = {
+      ...this.data[index],
+      update,
+    };
   }
 }
