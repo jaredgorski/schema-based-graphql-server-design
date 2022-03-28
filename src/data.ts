@@ -114,13 +114,13 @@ export class Collection<T extends Document> {
   updateById(id: string, update: Partial<T>) {
     const index = this.data.map((doc) => doc.id).indexOf(id);
 
-    if (!index) {
+    if (typeof index === 'undefined') {
       throw new Error(`Item ${id} not found.`);
     }
 
     this.data[index] = {
       ...this.data[index],
-      update,
+      ...update,
     };
   }
 }
