@@ -25,6 +25,7 @@ npm run build
 To run the server:
 
 1. Execute `dev` script
+
     ```
     npm run dev
     ```
