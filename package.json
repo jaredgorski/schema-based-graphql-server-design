@@ -28,6 +28,7 @@
   "author": "Jared Gorski <jaredgorski6@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@graphql-tools/schema": "^8.3.5",
     "@graphql-tools/utils": "^8.6.5",
     "apollo-server": "^3.6.6",
     "graphql": "^16.3.0",
